@@ -5,7 +5,7 @@ dotenv.config();
 import express from 'express';
 import cors from 'cors';
 import { CORSconfig } from './src/config/cors.js';
-import { Router } from './src/routes/appRouter.js';
+import { Router } from './src/routes/webhookRoutes.js';
 import logger from './src/services/logger.js';
 
 class Server {
@@ -33,7 +33,7 @@ class Server {
     this.configureRoutes();
 
     this.app.listen(this.port, () => {
-      logger.debug(`Server "Studio Rose | Appointments" running is the port ${this.port}`);
+      logger.info(`Server "Studio Rose | Appointments" running is the port ${this.port}`);
     });
   }
 }
