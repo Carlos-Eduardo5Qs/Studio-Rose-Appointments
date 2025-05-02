@@ -23,7 +23,6 @@ class AppController {
         res.status(200).send(challenge);
       } else {
         logger.debug('[Webhook] Verification failed.');
-        logger.debug(this.VERIFY_TOKEN);
         res.sendStatus(403);
       }
     } else {
