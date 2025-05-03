@@ -24,6 +24,39 @@ Exemplos de comandos:
 
 ---
 
+### 🧭 Fluxo do Sistema de Agendamentos via WhatsApp
+
+Abaixo está o fluxograma que representa o caminho da mensagem desde o envio pelo cliente até a resposta final do sistema:
+
+![Fluxograma do bot](https://i.imgur.com/TbxskaE.png)
+
+#### 🧠 Como funciona o fluxo:
+
+1. **Cliente envia mensagem via WhatsApp**  
+   O cliente inicia o contato solicitando um agendamento, cancelamento ou modificação.
+
+2. **Mensagem chega no servidor**  
+   O backend recebe essa mensagem e inicia o processamento.
+
+3. **Mensagem é enviada para o sistema de fila**  
+   Para garantir escalabilidade e não travar o servidor principal, a mensagem é enfileirada.
+
+4. **Worker processa a mensagem**  
+   Um worker (processo separado) analisa a mensagem e identifica a intenção do cliente (marcar, adiar, editar ou cancelar um horário).
+
+5. **Ação do cliente é identificada**  
+   O sistema toma decisões baseadas na intenção extraída da mensagem.
+
+6. **Ação executada (marcar/adiar/editar/cancelar horário)**  
+   Dependendo da ação, o sistema verifica a tabela de horários disponíveis no banco de dados e realiza a alteração necessária.
+
+7. **Resposta para o cliente**  
+   O bot responde com a confirmação da ação ou apresenta opções disponíveis (como horários alternativos).
+
+---
+
+🧩 Esse fluxo garante um atendimento organizado, eficiente e sem travamentos, mesmo com múltiplas mensagens chegando ao mesmo tempo.
+
 ## ✅ To-do List (Organizado)
 
 ### 🔧 1. Setup do Projeto ✅
